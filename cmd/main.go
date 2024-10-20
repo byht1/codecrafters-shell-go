@@ -11,12 +11,14 @@ import (
 var _ = fmt.Fprint
 
 func main() {
-	fmt.Fprint(os.Stdout, "$ ")
+	for {
+		fmt.Fprint(os.Stdout, "$ ")
 
-	text, err := bufio.NewReader(os.Stdin).ReadString('\n')
-	if err != nil {
-		panic(err)
+		text, err := bufio.NewReader(os.Stdin).ReadString('\n')
+		if err != nil {
+			panic(err)
+		}
+
+		commands.CommandNotFound(text)
 	}
-
-	commands.CommandNotFound(text)
 }
