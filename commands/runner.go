@@ -1,20 +1,23 @@
 package commands
 
+type CommandName string
+type CommandType string
+
 type Runner interface {
 	Run(params []string) error
-	GetName() string
+	GetName() CommandName
+	GetType() CommandType
 }
 
 type AbstractCommand struct {
-	name string
+	name        CommandName
+	typeCommand CommandType
 }
 
-func (c *AbstractCommand) GetName() string {
+func (c *AbstractCommand) GetName() CommandName {
 	return c.name
 }
 
-var RunnerCollections []Runner
-
-func init() {
-	RunnerCollections = append(RunnerCollections, &ExitCommand{AbstractCommand{CLI_EXIT}}, &EchoCommand{AbstractCommand{CLI_ECHO}})
+func (c *AbstractCommand) GetType() CommandType {
+	return c.typeCommand
 }

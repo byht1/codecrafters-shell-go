@@ -1,15 +1,33 @@
 package commands
 
+type CommandCollection map[CommandName]Runner
+
 const (
-	CLI_EXIT = "exit"
-	CLI_ECHO = "echo"
+	SHELL_TYPE            CommandType = "shell"
+	EXECUTABLE_FILES_TYPE CommandType = "executableFiles"
 )
 
-var Collections map[string]string
+const (
+	CLI_EXIT CommandName = "exit"
+	CLI_ECHO CommandName = "echo"
+	CLI_TYPE CommandName = "type"
+)
 
-func init() {
-	Collections = make(map[string]string)
+var collections *CommandCollection
 
-	Collections[CLI_EXIT] = CLI_EXIT
-	Collections[CLI_ECHO] = CLI_ECHO
+func SingletonCommandCollection() CommandCollection {
+
+	if collections != nil {
+		return *collections
+	}
+
+	obj := make(CommandCollection)
+
+	obj[CLI_EXIT] = &ExitCommand{AbstractCommand{CLI_EXIT, SHELL_TYPE}}
+	obj[CLI_ECHO] = &EchoCommand{AbstractCommand{CLI_ECHO, SHELL_TYPE}}
+	obj[CLI_TYPE] = &TypeCommand{AbstractCommand{CLI_TYPE, SHELL_TYPE}}
+
+	collections = &obj
+
+	return *collections
 }

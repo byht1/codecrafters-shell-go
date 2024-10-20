@@ -6,13 +6,14 @@ import (
 	"strings"
 )
 
-func ProcessInputData(input string) (string, []string, bool) {
+func ProcessInputData(input string) (Runner, []string, bool) {
 	splitInput := strings.Split(input, " ")
-	command := splitInput[0]
+	command := CommandName(splitInput[0])
+	commandCollection := SingletonCommandCollection()
 
-	value, isOk := Collections[command]
+	value, isOk := commandCollection[command]
 	if !isOk {
-		fmt.Fprint(os.Stdout, strings.TrimSpace(command)+": command not found\n")
+		fmt.Fprint(os.Stdout, strings.TrimSpace(splitInput[0])+": command not found\n")
 	}
 
 	return value, splitInput[1:], isOk
