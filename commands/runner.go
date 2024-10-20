@@ -16,5 +16,5 @@ func (c *AbstractCommand) GetName() string {
 var RunnerCollections []Runner
 
 func init() {
-	RunnerCollections = append(RunnerCollections, &ExitCommand{AbstractCommand{CLI_EXIT}})
+	RunnerCollections = append(RunnerCollections, &ExitCommand{AbstractCommand{CLI_EXIT}}, &EchoCommand{AbstractCommand{CLI_ECHO}})
 }
