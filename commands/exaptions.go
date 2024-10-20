@@ -3,13 +3,17 @@ package commands
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
-func CommandNotFound(input string) string {
-	value, isOk := Collections[input]
+func ProcessInputData(input string) (string, []string, bool) {
+	splitInput := strings.Split(input, " ")
+	command := splitInput[0]
+
+	value, isOk := Collections[command]
 	if !isOk {
-		fmt.Fprint(os.Stdout, input[:len(input)-1]+": command not found\n")
+		fmt.Fprint(os.Stdout, strings.TrimSpace(command)+": command not found\n")
 	}
 
-	return value
+	return value, splitInput[1:], isOk
 }

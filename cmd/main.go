@@ -8,7 +8,7 @@ import (
 	"github.com/codecrafters-io/shell-starter-go/commands"
 )
 
-var _ = fmt.Fprint
+// var _ = fmt.Fprint
 
 func main() {
 	for {
@@ -19,6 +19,16 @@ func main() {
 			panic(err)
 		}
 
-		commands.CommandNotFound(text)
+		command, params, isOk := commands.ProcessInputData(text)
+		if !isOk {
+			continue
+		}
+
+		for _, item := range commands.RunnerCollections {
+			if item.GetName() == command {
+				item.Run(params)
+			}
+		}
+
 	}
 }
