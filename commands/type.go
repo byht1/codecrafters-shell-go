@@ -29,7 +29,7 @@ func (c *TypeCommand) Run(params []string) error {
 	case SHELL_TYPE:
 		fmt.Printf("%v is a shell builtin\n", commandName)
 	case EXECUTABLE_FILES_TYPE:
-		fmt.Printf("%v is %v\n", commandName, "path")
+		fmt.Printf("%v is %v\n", commandName, command.GetPathToExecutableFile())
 	default:
 		c.commandNotFound(searchCommand)
 	}

@@ -8,9 +8,10 @@ const (
 )
 
 const (
-	CLI_EXIT CommandName = "exit"
-	CLI_ECHO CommandName = "echo"
-	CLI_TYPE CommandName = "type"
+	CLI_EXIT     CommandName = "exit"
+	CLI_ECHO     CommandName = "echo"
+	CLI_TYPE     CommandName = "type"
+	DEFAULT_PATH string      = "default"
 )
 
 var collections *CommandCollection
@@ -23,9 +24,9 @@ func SingletonCommandCollection() CommandCollection {
 
 	obj := make(CommandCollection)
 
-	obj[CLI_EXIT] = &ExitCommand{AbstractCommand{CLI_EXIT, SHELL_TYPE}}
-	obj[CLI_ECHO] = &EchoCommand{AbstractCommand{CLI_ECHO, SHELL_TYPE}}
-	obj[CLI_TYPE] = &TypeCommand{AbstractCommand{CLI_TYPE, SHELL_TYPE}}
+	obj[CLI_EXIT] = &ExitCommand{AbstractCommand{CLI_EXIT, SHELL_TYPE, DEFAULT_PATH}}
+	obj[CLI_ECHO] = &EchoCommand{AbstractCommand{CLI_ECHO, SHELL_TYPE, DEFAULT_PATH}}
+	obj[CLI_TYPE] = &TypeCommand{AbstractCommand{CLI_TYPE, SHELL_TYPE, DEFAULT_PATH}}
 
 	collections = &obj
 

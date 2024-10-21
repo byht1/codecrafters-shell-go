@@ -6,9 +6,12 @@ import (
 	"os"
 
 	"github.com/codecrafters-io/shell-starter-go/commands"
+	"github.com/codecrafters-io/shell-starter-go/pkg/config"
 )
 
 func main() {
+
+	config.ProcessEnvPath()
 
 	for {
 		fmt.Fprint(os.Stdout, "$ ")
