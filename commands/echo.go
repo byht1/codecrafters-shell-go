@@ -10,7 +10,7 @@ type EchoCommand struct {
 }
 
 func (c *EchoCommand) Run(params []string) error {
-	fmt.Print(strings.Join(params, " "))
+	fmt.Print(strings.Join(params, " ") + "\n")
 
 	return nil
 }

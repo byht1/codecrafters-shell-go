@@ -7,7 +7,7 @@ import (
 )
 
 func ProcessInputData(input string) (Runner, []string, bool) {
-	splitInput := strings.Split(input, " ")
+	splitInput := strings.Split(strings.TrimSpace(input), " ")
 	command := CommandName(splitInput[0])
 	commandCollection := SingletonCommandCollection()
 
