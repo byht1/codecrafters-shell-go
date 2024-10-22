@@ -12,6 +12,7 @@ const (
 	CLI_ECHO     CommandName = "echo"
 	CLI_TYPE     CommandName = "type"
 	CLI_PWD      CommandName = "pwd"
+	CLI_CD       CommandName = "cd"
 	DEFAULT_PATH string      = "default"
 )
 
@@ -29,6 +30,7 @@ func SingletonCommandCollection() CommandCollection {
 	obj[CLI_ECHO] = &EchoCommand{AbstractCommand{CLI_ECHO, SHELL_TYPE, DEFAULT_PATH}}
 	obj[CLI_TYPE] = &TypeCommand{AbstractCommand{CLI_TYPE, SHELL_TYPE, DEFAULT_PATH}}
 	obj[CLI_PWD] = &PwdCommand{AbstractCommand{CLI_PWD, SHELL_TYPE, DEFAULT_PATH}}
+	obj[CLI_CD] = &CdCommand{AbstractCommand{CLI_CD, SHELL_TYPE, DEFAULT_PATH}}
 
 	collections = &obj
 
