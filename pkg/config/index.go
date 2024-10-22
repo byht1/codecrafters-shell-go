@@ -1,20 +1,16 @@
 package config
 
 import (
-	"fmt"
 	"os"
 	"path"
 	"strings"
 
 	"github.com/codecrafters-io/shell-starter-go/commands"
+	"github.com/codecrafters-io/shell-starter-go/pkg/helpers"
 )
 
 func ProcessEnvPath() {
-	pathValue := os.Getenv("PATH")
-	if pathValue == "" {
-		fmt.Println("No PATH environment variable found.")
-		os.Exit(1)
-	}
+	pathValue := helpers.GetEnv("PATH")
 
 	commandCollection := commands.SingletonCommandCollection()
 	paths := strings.Split(pathValue, ":")
