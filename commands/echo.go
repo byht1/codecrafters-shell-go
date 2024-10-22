@@ -2,6 +2,7 @@ package commands
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -10,7 +11,6 @@ type EchoCommand struct {
 }
 
 func (c *EchoCommand) Run(params []string) error {
-	fmt.Print(strings.Join(params, " ") + "\n")
-
+	fmt.Fprintf(os.Stdout, "%s\n", strings.Join(params, " "))
 	return nil
 }
