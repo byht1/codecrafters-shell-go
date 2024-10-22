@@ -11,6 +11,7 @@ const (
 	CLI_EXIT     CommandName = "exit"
 	CLI_ECHO     CommandName = "echo"
 	CLI_TYPE     CommandName = "type"
+	CLI_PWD      CommandName = "pwd"
 	DEFAULT_PATH string      = "default"
 )
 
@@ -27,6 +28,7 @@ func SingletonCommandCollection() CommandCollection {
 	obj[CLI_EXIT] = &ExitCommand{AbstractCommand{CLI_EXIT, SHELL_TYPE, DEFAULT_PATH}}
 	obj[CLI_ECHO] = &EchoCommand{AbstractCommand{CLI_ECHO, SHELL_TYPE, DEFAULT_PATH}}
 	obj[CLI_TYPE] = &TypeCommand{AbstractCommand{CLI_TYPE, SHELL_TYPE, DEFAULT_PATH}}
+	obj[CLI_PWD] = &PwdCommand{AbstractCommand{CLI_PWD, SHELL_TYPE, DEFAULT_PATH}}
 
 	collections = &obj
 
